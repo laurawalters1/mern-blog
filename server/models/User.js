@@ -23,6 +23,12 @@ const userSchema = new Schema(
       required: true,
       // match? maybe add a regex here to ensure password strength?
     },
+    posts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Post",
+      },
+    ],
   },
 
   {

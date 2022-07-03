@@ -17,6 +17,26 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+
+    //////////////////////////////////////
+    //////////////LOGIN///////////////////
+    //////////////////////////////////////
+
+    loginUser: async (parent, { email, password }, context) => {
+      const user = await User.findOne({ email });
+      if (!user) {
+        throw new AuthenticationError("Email not found!");
+      }
+
+      const correctPw = await user.isCorrectPassword(password);
+
+      if (!correctPw) {
+        throw new AuthenticationError("Incorrect password!");
+      }
+      const token = signToken(user);
+
+      return { token, user };
+    },
   },
 };
 module.exports = resolvers;

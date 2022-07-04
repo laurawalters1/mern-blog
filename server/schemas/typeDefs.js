@@ -5,6 +5,7 @@ const typeDefs = gql`
     username: String!
     email: String!
     password: String!
+    posts: [Post]
   }
 
   type UserAuth {
@@ -38,6 +39,8 @@ const typeDefs = gql`
     loginUser(email: String!, password: String!): UserAuth
 
     addPost(postTitle: String!, userId: ID!, postText: String!): Post
+
+    deletePost(postId: ID!, userId: ID!): User
   }
 `;
 

@@ -73,6 +73,21 @@ const resolvers = {
 
       return updatedPost;
     },
+
+    deletePost: async (parent, { postId, userId }, context) => {
+      const deletedPost = await Post.findByIdAndDelete({ _id: postId });
+
+      const user = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $pull: { posts: postId } },
+        { new: true, runValidators: true }
+      ).populate({
+        path: "posts",
+        model: "Post",
+      });
+
+      return user;
+    },
   },
 };
 module.exports = resolvers;

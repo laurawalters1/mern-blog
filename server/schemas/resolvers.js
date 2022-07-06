@@ -16,6 +16,9 @@ const resolvers = {
     },
   },
   Mutation: {
+    //////////////////////////////////////
+    //////////////SIGNUP///////////////////
+    //////////////////////////////////////
     addUser: async (parent, args) => {
       const user = await User.create(args);
       // generate token
@@ -102,6 +105,32 @@ const resolvers = {
       );
 
       return post;
+    },
+
+    followUser: async (parent, { userId, loggedInUser }, context) => {
+      //////////AUTH SECTION///////////////
+      // TODO: add authorisation to check if user is logged in and auth to save badges (i.e not a company or admin)
+
+      //////////PROCESSING/////////////////
+      const userLoggedIn = await User.findByIdAndUpdate(
+        { _id: loggedInUser },
+        { $addToSet: { following: userId } },
+        { new: true, runValidators: true }
+      );
+
+      const user = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $addToSet: { followers: loggedInUser } },
+        { new: true, runValidators: true }
+      );
+      //////////RETURN VALUE///////////////
+      return userLoggedIn
+        .populate({
+          path: "following",
+          model: "User",
+        })
+        .populate({ path: "followers", model: "User" })
+        .execPopulate();
     },
   },
 };

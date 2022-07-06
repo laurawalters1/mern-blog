@@ -6,6 +6,8 @@ const typeDefs = gql`
     email: String!
     password: String!
     posts: [Post]
+    followers: [User]
+    following: [User]
   }
 
   type UserAuth {
@@ -44,6 +46,8 @@ const typeDefs = gql`
     deletePost(postId: ID!, userId: ID!): User
 
     updatePost(postId: ID!, postText: String!, postTitle: String!): Post
+
+    followUser(userId: ID!, loggedInUser: ID!): User
   }
 `;
 

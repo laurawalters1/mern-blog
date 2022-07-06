@@ -9,6 +9,11 @@ const resolvers = {
     me: async (parent, args, context) => {
       return { response: "hello" };
     },
+    getPost: async (parent, { postId }, context) => {
+      const post = await Post.findById(postId);
+
+      return post;
+    },
   },
   Mutation: {
     addUser: async (parent, args) => {
@@ -37,6 +42,7 @@ const resolvers = {
 
       return { token, user };
     },
+
     addPost: async (parent, { postText, postTitle, userId }, context) => {
       //////////AUTH SECTION///////////////
       // TODO: add authorisation to check if current user can create posts (i.e not company or admin)

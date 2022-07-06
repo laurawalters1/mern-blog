@@ -50,6 +50,8 @@ const typeDefs = gql`
 
     followUser(userId: ID!, loggedInUser: ID!): User
 
+    unfollowUser(userId: ID!, loggedInUser: ID!): User
+
     likePost(userId: ID!, postId: ID!): Post
   }
 `;

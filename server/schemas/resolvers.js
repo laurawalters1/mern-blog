@@ -140,6 +140,28 @@ const resolvers = {
 
       return post.populate({ path: "likes", model: "User" }).execPopulate();
     },
+
+    unfollowUser: async (parent, { userId, loggedInUser }, context) => {
+      const user = await User.findByIdAndUpdate(
+        { _id: loggedInUser },
+        { $pull: { following: userId } },
+        { new: true, runValidators: true }
+      );
+
+      const otherUser = await User.findByIdAndUpdate(
+        { _id: userId },
+        { $pull: { followers: loggedInUser } },
+        { new: true, runValidators: true }
+      );
+
+      return user
+        .populate({
+          path: "following",
+          model: "User",
+        })
+        .populate({ path: "followers", model: "User" })
+        .execPopulate();
+    },
   },
 };
 module.exports = resolvers;

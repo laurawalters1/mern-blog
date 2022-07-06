@@ -88,6 +88,15 @@ const resolvers = {
 
       return user;
     },
+    updatePost: async (parent, { postId, postText, postTitle }, context) => {
+      const post = Post.findByIdAndUpdate(
+        { _id: postId },
+        { postText, postTitle },
+        { new: true, runValidators: true }
+      );
+
+      return post;
+    },
   },
 };
 module.exports = resolvers;

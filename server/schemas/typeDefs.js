@@ -41,6 +41,8 @@ const typeDefs = gql`
     addPost(postTitle: String!, userId: ID!, postText: String!): Post
 
     deletePost(postId: ID!, userId: ID!): User
+
+    updatePost(postId: ID!, postText: String!, postTitle: String!): Post
   }
 `;
 

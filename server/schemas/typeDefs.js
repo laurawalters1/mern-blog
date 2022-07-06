@@ -29,6 +29,7 @@ const typeDefs = gql`
     postText: String!
     createdAt: String
     comments: [Comment]
+    likes: [User]
   }
 
   type Query {
@@ -48,6 +49,8 @@ const typeDefs = gql`
     updatePost(postId: ID!, postText: String!, postTitle: String!): Post
 
     followUser(userId: ID!, loggedInUser: ID!): User
+
+    likePost(userId: ID!, postId: ID!): Post
   }
 `;
 

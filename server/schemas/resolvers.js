@@ -48,7 +48,6 @@ const resolvers = {
 
     addPost: async (parent, { postText, postTitle, userId }, context) => {
       //////////AUTH SECTION///////////////
-      // TODO: add authorisation to check if current user can create posts (i.e not company or admin)
 
       //////////PROCESSING/////////////////
       const post = await Post.create({
@@ -109,7 +108,6 @@ const resolvers = {
 
     followUser: async (parent, { userId, loggedInUser }, context) => {
       //////////AUTH SECTION///////////////
-      // TODO: add authorisation to check if user is logged in and auth to save badges (i.e not a company or admin)
 
       //////////PROCESSING/////////////////
       const userLoggedIn = await User.findByIdAndUpdate(
@@ -131,6 +129,16 @@ const resolvers = {
         })
         .populate({ path: "followers", model: "User" })
         .execPopulate();
+    },
+
+    likePost: async (parent, { userId, postId }, context) => {
+      const post = await Post.findByIdAndUpdate(
+        { _id: postId },
+        { $addToSet: { likes: userId } },
+        { new: true, runValidators: true }
+      );
+
+      return post.populate({ path: "likes", model: "User" }).execPopulate();
     },
   },
 };

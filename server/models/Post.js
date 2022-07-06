@@ -23,6 +23,12 @@ const postSchema = new Schema(
       // get: (createdAt) => moment(createdAt).format('MMM DD, YYYY [at] hh:mm a'),
     },
     comments: [commentSchema],
+    likes: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     toJSON: {

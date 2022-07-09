@@ -53,6 +53,7 @@ const typeDefs = gql`
     unfollowUser(userId: ID!, loggedInUser: ID!): User
 
     likePost(userId: ID!, postId: ID!): Post
+
     unlikePost(userId: ID!, postId: ID!): Post
   }
 `;

@@ -1,6 +1,11 @@
 // import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
+import Auth from '../../utils/auth';
+
+// mutations/queries
+import { ADD_USER } from '../../utils/mutations';
+
 const SignupForm = () => {
   return (
     <>

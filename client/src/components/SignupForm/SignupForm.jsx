@@ -1,19 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+// import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const signup = () => {
+const SignupForm = () => {
   return (
-    <View>
-      <Text>signup</Text>
+    <>
       <form action="">
       <input type="text" placeholder='email' />
       <input type="text" placeholder='username' />
       <input type="text" placeholder='password' />
+      <button>Submit</button>
       </form>
-    </View>
+    </>
   )
 }
 
-export default signup
+export default SignupForm
 
-const styles = StyleSheet.create({})

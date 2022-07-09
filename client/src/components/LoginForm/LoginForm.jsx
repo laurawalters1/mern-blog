@@ -1,18 +1,18 @@
-import { StyleSheet, Text, View } from 'react-native'
+// import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
-const login = () => {
+const LoginForm = () => {
   return (
-    <View>
-      <Text>login</Text>
+    <>
+
       <form action="">
       <input type="text" placeholder='email' />
       <input type="text" placeholder='password' />
+      <button>Submit</button>
       </form>
-    </View>
+    </>
   )
 }
 
-export default login
+export default LoginForm
 
-const styles = StyleSheet.create({})

@@ -34,10 +34,13 @@ const SignupForm = () => {
       }
   
       try {
+        console.log(userFormData)
         const { data } = await addUser({
-          variables: { ...userFormData },
+          variables:  {...userFormData },
         });
+        console.log("done")
         Auth.login(data.addUser.token);
+       
       } catch (err) {
         alert(err);
       }
@@ -51,7 +54,7 @@ const SignupForm = () => {
   return (
 
     <>
-      <form action="" onSubmit={handleFormSubmit}>
+      <form onSubmit={handleFormSubmit}>
       <input type="text" placeholder='email' name='email' onChange={handleUserInput}/>
       <input type="text" placeholder='username' name='username' onChange={handleUserInput} />
       <input type="password" placeholder='password' name='password' onChange={handleUserInput} />

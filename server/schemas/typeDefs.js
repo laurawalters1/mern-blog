@@ -8,6 +8,7 @@ const typeDefs = gql`
     posts: [Post]
     followers: [User]
     following: [User]
+    _id: ID!
   }
 
   type UserAuth {

@@ -5,8 +5,10 @@ const login = () => {
   return (
     <View>
       <Text>login</Text>
+      <form action="">
       <input type="text" placeholder='email' />
       <input type="text" placeholder='password' />
+      </form>
     </View>
   )
 }

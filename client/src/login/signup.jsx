@@ -5,9 +5,11 @@ const signup = () => {
   return (
     <View>
       <Text>signup</Text>
+      <form action="">
       <input type="text" placeholder='email' />
       <input type="text" placeholder='username' />
       <input type="text" placeholder='password' />
+      </form>
     </View>
   )
 }

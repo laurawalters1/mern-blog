@@ -3,6 +3,10 @@ import {
   SignupForm,
   LoginForm
 } from "./components";
+import {
+  Dashboard,
+} from "./pages";
+import Auth from "./utils/auth";
 
 import {
   ApolloClient,
@@ -11,6 +15,14 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
+
+// router
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  HashRouter,
+} from "react-router-dom";
 
 // http link
 const httpLink = createHttpLink({
@@ -37,14 +49,30 @@ const authLink = setContext((_, { headers }) => {
     cache: new InMemoryCache(),
   });
 
+
+
 function App() {
 
   return (
     <ApolloProvider client={client}>
     <div className="App">
       <h1>Mern Blog</h1>
-      <SignupForm/>
-      <LoginForm/>
+      <Router>
+      <Routes>
+        <Route
+           path="/"
+           element={Auth.loggedIn() ? <Dashboard /> : <LoginForm />}
+              ></Route>
+      <Route
+                path="/login"
+                element={Auth.loggedIn() ? <Dashboard /> : <LoginForm />}
+              />
+        <Route
+                path="/signup"
+                element={Auth.loggedIn() ? <Dashboard /> : <SignupForm />}
+              />
+      </Routes>
+      </Router>
     </div>
     </ApolloProvider>
   );

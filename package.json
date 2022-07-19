@@ -1,34 +1,36 @@
 {
-  "name": "mern-blog",
-  "version": "1.0.0",
-  "engines": {
-    "node": "18.0.0"
-  },
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "start": "node server/server.js",
-    "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
-    "install": "cd server && npm i && cd ../client && npm i",
-    "build": "cd client && npm run build",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "seed": "cd server && npm run seed"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/laurawalters1/mern-blog"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/laurawalters1/mern-blog/issues"
-  },
-  "homepage": "https://github.com/laurawalters1/mern-blog#readme",
-  "keywords": [],
-  "devDependencies": {
-    "concurrently": "^5.1.0"
-  },
-  "dependencies": {
-    "react-icons": "^4.4.0"
-  }
+    "name": "mern-blog",
+    "version": "1.0.0",
+    "engines": {
+        "node": "18.0.0"
+    },
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node server/server.js",
+        "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+        "install": "cd server && npm i && cd ../client && npm i",
+        "build": "cd client && npm run build",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "seed": "cd server && npm run seed",
+        "create:model": "cd node_modules && cd mern-model-generator && npm run create:model"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/laurawalters1/mern-blog"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/laurawalters1/mern-blog/issues"
+    },
+    "homepage": "https://github.com/laurawalters1/mern-blog#readme",
+    "keywords": [],
+    "devDependencies": {
+        "concurrently": "^5.1.0"
+    },
+    "dependencies": {
+        "mongoose-model-templates": "^1.0.41",
+        "react-icons": "^4.4.0"
+    }
 }

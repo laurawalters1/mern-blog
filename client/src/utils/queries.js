@@ -9,6 +9,11 @@ export const GET_ME = gql`
       password
       posts {
         postText
+        postTitle
+        postedBy {
+          username
+          _id
+        }
       }
       followers {
         _id

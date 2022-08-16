@@ -9,7 +9,14 @@ const resolvers = {
     me: async (parent, args, context) => {
       const user = await User.findById(context.user._id)
         .populate("following")
-        .populate("posts");
+        .populate({
+          path: "posts",
+          model: "Post",
+          populate: {
+            path: "postedBy",
+            model: "User",
+          },
+        });
 
       return user;
     },

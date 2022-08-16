@@ -16,7 +16,8 @@ import {
   createHttpLink,
 } from "@apollo/client";
 import { setContext } from "@apollo/client/link/context";
-
+// provider
+import UserProvider from "./context/UserProvider";
 // router
 import {
   BrowserRouter as Router,
@@ -57,6 +58,7 @@ function App() {
 
   return (
     <ApolloProvider client={client}>
+      <UserProvider>
     <div className="App">
       <Navbar />
       <Router>
@@ -76,6 +78,7 @@ function App() {
       </Routes>
       </Router>
     </div>
+    </UserProvider>
     </ApolloProvider>
   );
 }

@@ -1,7 +1,8 @@
 import './App.css';
 import {
   SignupForm,
-  LoginForm
+  LoginForm,
+  Navbar
 } from "./components";
 import {
   Dashboard,
@@ -43,11 +44,12 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
+
   // new apollo client
-  const client = new ApolloClient({
-    link: httpLink,
-    cache: new InMemoryCache(),
-  });
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
 
 
 
@@ -56,7 +58,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
     <div className="App">
-      <h1>Mern Blog</h1>
+      <Navbar />
       <Router>
       <Routes>
         <Route

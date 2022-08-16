@@ -7,7 +7,9 @@ const { isConstValueNode } = require("graphql");
 const resolvers = {
   Query: {
     me: async (parent, args, context) => {
-      const user = await User.findById(context.user._id).populate("following");
+      const user = await User.findById(context.user._id)
+        .populate("following")
+        .populate("posts");
 
       return user;
     },

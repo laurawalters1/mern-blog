@@ -1,14 +1,17 @@
 import React from 'react'
+import {
+  PostCard
+} from "../../components";
 
 function MyPosts({posts}) {
     console.log('MyPosts', posts)
   return (
   <>
-    <ul>
+   
 
-    {posts.forEach((post) => <li>{post.postText}</li>
+    {posts.map((post) => <PostCard post={post}/>
     )}
-    </ul>
+
   </>
   )
 }

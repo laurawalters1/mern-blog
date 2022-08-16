@@ -8,7 +8,7 @@ import {
   Dashboard,
 } from "./pages";
 import Auth from "./utils/auth";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {
   ApolloClient,
   InMemoryCache,

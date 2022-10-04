@@ -25,3 +25,13 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+
+export const DELETE_POST = gql`
+  mutation deletePost($postId: ID!, $userId: ID!) {
+    deletePost(postId: $postId, userId: $userId) {
+      user {
+        username
+      }
+    }
+  }
+`;

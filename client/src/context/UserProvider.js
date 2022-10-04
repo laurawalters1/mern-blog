@@ -1,4 +1,10 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useQuery,
+} from "react";
 // get user information
 import { CONTEXT, GET_ME } from "../utils/queries";
 import { useLazyQuery } from "@apollo/react-hooks";
@@ -13,20 +19,26 @@ const UserProvider = ({ children }) => {
   const [getUserData] = useLazyQuery(GET_ME);
   // get information regarding the logged in user
   const getUserDataFunc = async () => {
-    const { data } = await getUserData();
-    setLoggedInUser(data.me);
+    const { data, loading } = await getUserData();
+    if (!loading) {
+      setLoggedInUser(data.me);
+    }
+    console.log("get user data func running");
+    // setLoggedInUser("hello");
   };
 
   useEffect(() => {
     getUserDataFunc();
+    console.log("use effect test");
   }, []);
-
+  // console.log("provider", loggedInUser);
   return (
     // return chat provider
     <UserContext.Provider
       value={{
         loggedInUser,
         setLoggedInUser,
+        test: "test",
       }}
     >
       {children}

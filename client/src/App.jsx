@@ -26,6 +26,10 @@ import {
   HashRouter,
 } from "react-router-dom";
 
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'jquery/dist/jquery.min.js'
+import 'bootstrap/dist/js/bootstrap.min.js'
+
 // http link
 const httpLink = createHttpLink({
  uri: "http://localhost:3001/graphql" ,

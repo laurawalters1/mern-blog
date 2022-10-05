@@ -30,7 +30,10 @@
         "concurrently": "^5.1.0"
     },
     "dependencies": {
+        "bootstrap": "^5.2.2",
+        "jquery": "^3.6.1",
         "mongoose-model-templates": "^1.0.41",
+        "react-bootstrap": "^2.5.0",
         "react-icons": "^4.4.0"
     }
 }

@@ -34,6 +34,14 @@ export const ADD_POST = gql`
   }
 `;
 
+export const UPDATE_POST = gql`
+  mutation updatePost($postTitle: String!, $postText: String!, $postId: ID!) {
+    updatePost(postTitle: $postTitle, postText: $postText, postId: $postId) {
+      _id
+    }
+  }
+`;
+
 export const DELETE_POST = gql`
   mutation deletePost($postId: ID!, $userId: ID!) {
     deletePost(postId: $postId, userId: $userId) {

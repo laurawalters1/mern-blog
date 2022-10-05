@@ -54,7 +54,7 @@ const Dashboard = () => {
     <>
       <h1>Hey {username}!</h1>
  
-    <Button variant="primary" onClick={handleShow} className="btn btn-success">
+    <Button variant="primary" onClick={handleShow} className="mt-5 btn btn-success">
         New Post
       </Button>
     <Modal show={show} onHide={handleClose}>
@@ -78,7 +78,9 @@ const Dashboard = () => {
           </Button>
         </Modal.Footer>
       </Modal>
+      <div className='d-flex justify-content-center'>
       <MyPosts posts={posts} />
+      </div>
     </>
   )
     }

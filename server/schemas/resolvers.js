@@ -57,12 +57,12 @@ const resolvers = {
       return { token, user };
     },
 
-    addPost: async (parent, { postText, postTitle, userId }, context) => {
+    addPost: async (parent, { postText, postTitle }, context) => {
       //////////AUTH SECTION///////////////
-
+      console.log(context.user._id);
       //////////PROCESSING/////////////////
       const post = await Post.create({
-        postedBy: userId,
+        postedBy: context.user._id,
         postText,
         postTitle,
       });
@@ -76,7 +76,7 @@ const resolvers = {
 
       // add to the users posts array
       const user = await User.findByIdAndUpdate(
-        { _id: userId },
+        { _id: context.user._id },
         {
           $addToSet: {
             posts: post._id,
@@ -89,7 +89,7 @@ const resolvers = {
       });
 
       //////////RETURN VALUE///////////////
-
+      console.log(updatedPost);
       return updatedPost;
     },
 

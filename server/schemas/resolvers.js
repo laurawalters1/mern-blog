@@ -25,6 +25,11 @@ const resolvers = {
 
       return post;
     },
+    allPosts: async (parent, {}, context) => {
+      const posts = await Post.find();
+
+      return posts;
+    },
   },
   Mutation: {
     //////////////////////////////////////

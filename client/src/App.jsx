@@ -6,6 +6,7 @@ import {
 } from "./components";
 import {
   Dashboard,
+  Home
 } from "./pages";
 import Auth from "./utils/auth";
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -78,6 +79,10 @@ function App() {
         <Route
                 path="/signup"
                 element={Auth.loggedIn() ? <Dashboard /> : <SignupForm />}
+              />
+               <Route
+                path="/home"
+                element={<Home />}
               />
       </Routes>
       </Router>

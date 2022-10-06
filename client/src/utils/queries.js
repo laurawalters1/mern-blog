@@ -27,3 +27,18 @@ export const GET_ME = gql`
     }
   }
 `;
+
+export const ALL_POSTS = gql`
+  query AllPosts {
+    allPosts {
+      _id
+      postTitle
+      postText
+      postedBy {
+        username
+        _id
+      }
+      createdAt
+    }
+  }
+`;

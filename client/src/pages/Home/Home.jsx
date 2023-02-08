@@ -3,11 +3,11 @@ import { ALL_POSTS } from "../../utils/queries";
 import { useMutation, useQuery, useLazyQuery } from "@apollo/react-hooks";
 
 export default function Home() {
-    const { loading, data } = useLazyQuery(ALL_POSTS);
+    const { loading, data } = useQuery(ALL_POSTS);
 
-    // const posts = data?.allPosts
     if(!loading){
-    console.log(data)
+        console.log("loading: ", loading)
+        console.log("data: ", data)
     }
   return (
     <div>Home</div>
